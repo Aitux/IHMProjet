@@ -53,6 +53,9 @@ public class Colorchooser extends JDialog {
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						Parent.setRGB(test.getColor());
+						Parent.setGreyLevel();
+						System.out.println(Parent.toString());
+
 						dispose();
 					}
 				});

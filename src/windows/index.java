@@ -1,10 +1,9 @@
 package windows;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,12 +18,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
 
 public class index extends JFrame {
 
 	private JPanel contentPane;
 	private Color RGB;
+	private Color GreyLevel;
 	private index info = this;
 	/**
 	 * Launch the application.
@@ -129,7 +128,19 @@ public class index extends JFrame {
 	}
 	
 	public String toString(){
-		return RGB.toString();
+		return RGB.toString() + " "+ GreyLevel.toString();
 	}
 
+	public void addCanvas(){
+		
+	}
+	
+	public void setGreyLevel(){
+		int r, g, b, res;
+		r = RGB.getRed();
+		g = RGB.getGreen();
+		b = RGB.getBlue();
+		res =(int) ((int) 0.3*r+0.59*g+0.11*b);
+		this.GreyLevel = new Color(res, res ,res);
+	}
 }
