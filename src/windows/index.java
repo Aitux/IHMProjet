@@ -66,15 +66,10 @@ public class index extends JFrame {
 		JMenuItem mntmFile = new JMenuItem("Add new color");
 		mntmFile.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				try{
-					TeSt dialog = new TeSt();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				}catch(Exception ex){
-					ex.printStackTrace();
-				}
-				
+			public void actionPerformed(ActionEvent e) {				
+				// TODO Auto-generated method stub
+				Colorchooser newcouleur = new Colorchooser();
+				newcouleur.setLocationRelativeTo(contentPane);
 			}
 		});
 		mnFile.add(mntmFile);
@@ -127,4 +122,5 @@ public class index extends JFrame {
 		contentPane.add("Center",lblYourWorkspaceIs);
 		}else contentPane.remove(lblYourWorkspaceIs);
 	}
+
 }
