@@ -56,7 +56,8 @@ public class index extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				Colorchooser newcouleur = new Colorchooser();
+				newcouleur.setLocationRelativeTo(contentPane);
 			}
 		});
 		mnFile.add(mntmFile);
@@ -98,4 +99,5 @@ public class index extends JFrame {
 		lblYourWorkspaceIs.setBounds(237, 248, 560, 30);
 		contentPane.add(lblYourWorkspaceIs);
 	}
+
 }
