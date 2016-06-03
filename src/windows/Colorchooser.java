@@ -56,7 +56,6 @@ public class Colorchooser extends JDialog {
 			}
 		}
 		this.pack();
-		//this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
 
