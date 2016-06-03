@@ -5,7 +5,14 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -14,6 +21,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JSpinner;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class index extends JFrame {
 
@@ -39,6 +50,7 @@ public class index extends JFrame {
 	 * Create the frame.
 	 */
 	public index() {
+		int compNum;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/balance.png")));
 		setBackground(Color.BLACK);
 		setTitle("Comparateur de niveau de gris");
@@ -55,7 +67,13 @@ public class index extends JFrame {
 		mntmFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				try{
+					TeSt dialog = new TeSt();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				}catch(Exception ex){
+					ex.printStackTrace();
+				}
 				
 			}
 		});
@@ -63,7 +81,6 @@ public class index extends JFrame {
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Compare two colors");
 		mnFile.add(mntmNewMenuItem);
-		
 		JSeparator separator = new JSeparator();
 		mnFile.add(separator);
 		
@@ -77,6 +94,11 @@ public class index extends JFrame {
 		mnFile.add(separator_1);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnFile.add(mntmExit);
 		
 		JMenu mnEdit = new JMenu("Edit");
@@ -90,12 +112,19 @@ public class index extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
 		
 		JLabel lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
 		lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
 		lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
-		lblYourWorkspaceIs.setBounds(237, 248, 560, 30);
-		contentPane.add(lblYourWorkspaceIs);
+		
+		Component horizontalStrut = Box.createHorizontalStrut((this.getWidth()/4));
+//		contentPane.add(horizontalStrut, BorderLayout.WEST);
+		contentPane.addMouseMotionListener(new MouseMotionAdapter() {
+		});
+		if((compNum = contentPane.getComponentCount()) == 0 ){
+		contentPane.add("Center",lblYourWorkspaceIs);
+		}else contentPane.remove(lblYourWorkspaceIs);
 	}
 }
