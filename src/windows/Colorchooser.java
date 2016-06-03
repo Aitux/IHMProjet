@@ -15,6 +15,7 @@ import java.awt.Dimension;
 public class Colorchooser extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private index Parent;
 	/**
 	 * Create the dialog.
 	 */
@@ -46,6 +47,18 @@ public class Colorchooser extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 				okButton.setActionCommand("OK");
+				okButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						Parent.setRGB(test.getColor());
+						Parent.setGreyLevel();
+						System.out.println(Parent.toString());
+
+						dispose();
+					}
+				});
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
@@ -68,4 +81,7 @@ public class Colorchooser extends JDialog {
 		this.setVisible(true);
 	}
 
+	public void setParent(index Parent){
+		this.Parent = Parent;
+	}
 }
