@@ -52,6 +52,15 @@ public class Colorchooser extends JDialog {
 			{
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						dispose();
+						
+					}
+				});
 				buttonPane.add(cancelButton);
 			}
 		}
