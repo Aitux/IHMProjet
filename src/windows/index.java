@@ -1,6 +1,5 @@
 package windows;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -9,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseMotionAdapter;
 
-import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -18,11 +17,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagConstraints;
-import java.awt.Canvas;
-import javax.swing.JComboBox;
-import java.awt.Insets;
-import javax.swing.BoxLayout;
 
 public class index extends JFrame {
 
@@ -111,13 +105,14 @@ public class index extends JFrame {
 
 
 
-		
+
 		contentPane.addMouseMotionListener(new MouseMotionAdapter() {
+
 		});
 		isEmpty();
 	}
 
-	private void isEmpty() {
+	public void isEmpty() {
 		int compNum;
 		JLabel lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
 		if((compNum = contentPane.getComponentCount()) == 0 ){
@@ -130,9 +125,12 @@ public class index extends JFrame {
 			gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
 			gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
 			contentPane.setLayout(gbl_contentPane);
+			System.out.println(compNum);
 		}else{ 
 			contentPane.remove(lblYourWorkspaceIs);
 			contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+			contentPane.repaint();
+			System.out.println(compNum);
 
 		}
 	}
@@ -140,15 +138,17 @@ public class index extends JFrame {
 	public void setRGB(Color color){
 		this.RGB = color;
 	}
-	
+
 	public String toString(){
 		return RGB.toString() + " "+ GreyLevel.toString();
 	}
 
-	public void addCanvas(){
-		
+	public void addCanvas(Color rgb, Color Grey){
+		MyCanvas canvas = new MyCanvas(rgb);		
+		canvas.repaint();
+		contentPane.add(canvas);
 	}
-	
+
 	public void setGreyLevel(){
 		int r, g, b, res;
 		r = RGB.getRed();
@@ -156,5 +156,13 @@ public class index extends JFrame {
 		b = RGB.getBlue();
 		res =(int) ((int) 0.3*r+0.59*g+0.11*b);
 		this.GreyLevel = new Color(res, res ,res);
+	}
+
+	public Color getRGB(){
+		return this.RGB;
+	}
+
+	public Color getGrey(){
+		return this.GreyLevel;
 	}
 }

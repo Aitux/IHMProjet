@@ -1,0 +1,27 @@
+package windows;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class MyCanvas extends JPanel{
+
+	private Color color;
+
+	public MyCanvas(Color color){
+		this.color = color;
+	}
+	
+	public void paint(Graphics g){
+		super.paint(g);
+		Color c = g.getColor();
+		g.setColor(color);
+		g.fillOval(50, 50, 50, 50);
+		g.setColor(c);
+		repaint();
+	}
+	public void setColor(Color color){
+		this.color = color;
+	}
+}
