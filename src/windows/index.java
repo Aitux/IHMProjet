@@ -1,6 +1,5 @@
 package windows;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -9,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseMotionAdapter;
 
-import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -103,38 +102,53 @@ public class index extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0};
-		gbl_contentPane.rowHeights = new int[]{0};
-		gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
 
 
-		JLabel lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
-		lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
-		lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
-		Component horizontalStrut = Box.createHorizontalStrut((int) (this.getWidth()/4.5));
+
+
 		contentPane.addMouseMotionListener(new MouseMotionAdapter() {
+
 		});
+		isEmpty();
+	}
+
+	public void isEmpty() {
+		int compNum;
+		JLabel lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
 		if((compNum = contentPane.getComponentCount()) == 0 ){
+			lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
+			lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
 			contentPane.add(lblYourWorkspaceIs);
-		}else{ contentPane.remove(lblYourWorkspaceIs);
+			GridBagLayout gbl_contentPane = new GridBagLayout();
+			gbl_contentPane.columnWidths = new int[]{0};
+			gbl_contentPane.rowHeights = new int[]{0};
+			gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
+			gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
+			contentPane.setLayout(gbl_contentPane);
+			System.out.println(compNum);
+		}else{ 
+			contentPane.remove(lblYourWorkspaceIs);
+			contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+			contentPane.repaint();
+			System.out.println(compNum);
+
 		}
 	}
 
 	public void setRGB(Color color){
 		this.RGB = color;
 	}
-	
+
 	public String toString(){
 		return RGB.toString() + " "+ GreyLevel.toString();
 	}
 
-	public void addCanvas(){
-		
+	public void addCanvas(Color rgb, Color Grey){
+		MyCanvas canvas = new MyCanvas(rgb);		
+		canvas.repaint();
+		contentPane.add(canvas);
 	}
-	
+
 	public void setGreyLevel(){
 		int r, g, b, res;
 		r = RGB.getRed();
@@ -142,5 +156,13 @@ public class index extends JFrame {
 		b = RGB.getBlue();
 		res =(int) ((int) 0.3*r+0.59*g+0.11*b);
 		this.GreyLevel = new Color(res, res ,res);
+	}
+
+	public Color getRGB(){
+		return this.RGB;
+	}
+
+	public Color getGrey(){
+		return this.GreyLevel;
 	}
 }
