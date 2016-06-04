@@ -22,7 +22,7 @@ public class Colorchooser extends JDialog {
 	 */
 	public Colorchooser() {
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Colorchooser.class.getResource("/balance.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Colorchooser.class.getResource("/color-circle.png")));
 		setMinimumSize(new Dimension(500, 300));
 
 		this.setTitle("Palette de couleur");
