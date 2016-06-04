@@ -15,6 +15,10 @@ import java.awt.Toolkit;
 
 public class Colorchooser extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1943127542127797500L;
 	private final JPanel contentPanel = new JPanel();
 	private index Parent;
 	/**

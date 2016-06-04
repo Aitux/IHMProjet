@@ -7,9 +7,11 @@ import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -19,15 +21,19 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 
-@SuppressWarnings("serial")
 public class index extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4845003394650059301L;
 	private JPanel paneLbl;
 	private JLabel lblYourWorkspaceIs;
 	private JPanel contentPane;
 	private Color RGB;
 	private Color GreyLevel;
 	private index info = this;
+	private ArrayList<ArrayList<String>> couleurTotal = new ArrayList<>();
 	/**
 	 * Launch the application.
 	 */
@@ -78,6 +84,20 @@ public class index extends JFrame {
 		mnFile.add(separator);
 
 		JMenuItem mntmExportTotxt = new JMenuItem("Export to .txt");
+		mntmExportTotxt.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFileChooser jfc = new JFileChooser();
+				jfc.setDialogTitle("Select the place to export");
+				jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				jfc.showOpenDialog(contentPane);
+				File fi = jfc.getSelectedFile();
+				
+				
+			}
+		});
 		mnFile.add(mntmExportTotxt);
 
 		JSeparator separator_1 = new JSeparator();
@@ -102,13 +122,6 @@ public class index extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-
-
-
-
-		contentPane.addMouseMotionListener(new MouseMotionAdapter() {
-
-		});
 		FirstTime();
 		isEmpty();
 	}
@@ -134,6 +147,7 @@ public class index extends JFrame {
 			gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
 			contentPane.setLayout(gbl_contentPane);
 		}else{ 
+			System.out.println("Hola Chica");
 			Container parent = lblYourWorkspaceIs.getParent();
 			parent.remove(lblYourWorkspaceIs);
 			parent.validate();
@@ -169,7 +183,7 @@ public class index extends JFrame {
 		r = RGB.getRed();
 		g = RGB.getGreen();
 		b = RGB.getBlue();
-		res =(int) ((int) 0.3*r+0.59*g+0.11*b);
+		res =(int) (0.3*r+0.59*g+0.11*b);
 		this.GreyLevel = new Color(res, res ,res);
 	}
 
