@@ -18,6 +18,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
+import java.awt.GridBagConstraints;
+import java.awt.Canvas;
+import javax.swing.JComboBox;
+import java.awt.Insets;
+import javax.swing.BoxLayout;
 
 public class index extends JFrame {
 
@@ -103,23 +108,32 @@ public class index extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0};
-		gbl_contentPane.rowHeights = new int[]{0};
-		gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
 
 
-		JLabel lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
-		lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
-		lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
-		Component horizontalStrut = Box.createHorizontalStrut((int) (this.getWidth()/4.5));
+
+		
 		contentPane.addMouseMotionListener(new MouseMotionAdapter() {
 		});
+		isEmpty();
+	}
+
+	private void isEmpty() {
+		int compNum;
+		JLabel lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
 		if((compNum = contentPane.getComponentCount()) == 0 ){
+			lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
+			lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
 			contentPane.add(lblYourWorkspaceIs);
-		}else{ contentPane.remove(lblYourWorkspaceIs);
+			GridBagLayout gbl_contentPane = new GridBagLayout();
+			gbl_contentPane.columnWidths = new int[]{0};
+			gbl_contentPane.rowHeights = new int[]{0};
+			gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
+			gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
+			contentPane.setLayout(gbl_contentPane);
+		}else{ 
+			contentPane.remove(lblYourWorkspaceIs);
+			contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+
 		}
 	}
 
