@@ -11,15 +11,22 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class Colorchooser extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1943127542127797500L;
 	private final JPanel contentPanel = new JPanel();
 	private index Parent;
 	/**
 	 * Create the dialog.
 	 */
 	public Colorchooser() {
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Colorchooser.class.getResource("/color-circle.png")));
 		setMinimumSize(new Dimension(500, 300));
 
 		this.setTitle("Palette de couleur");
@@ -52,11 +59,14 @@ public class Colorchooser extends JDialog {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
+						dispose();
 						Parent.setRGB(test.getColor());
 						Parent.setGreyLevel();
 						System.out.println(Parent.toString());
+						Parent.addCanvas(Parent.getRGB(), Parent.getGrey());
+						Parent.isEmpty();
+						Parent.validate();
 
-						dispose();
 					}
 				});
 				buttonPane.add(okButton);
@@ -70,6 +80,8 @@ public class Colorchooser extends JDialog {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
+
+
 						dispose();
 						
 					}
