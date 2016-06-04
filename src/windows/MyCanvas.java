@@ -13,13 +13,14 @@ public class MyCanvas extends JPanel{
 		this.color = color;
 	}
 	
-	public void paint(Graphics g){
-		super.paint(g);
+	public void paintComponent(Graphics g){
+		//super.paint(g);
+		
 		Color c = g.getColor();
 		g.setColor(color);
 		g.fillOval(50, 50, 50, 50);
 		g.setColor(c);
-		repaint();
+//		repaint();
 	}
 	public void setColor(Color color){
 		this.color = color;

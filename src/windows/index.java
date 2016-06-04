@@ -145,8 +145,13 @@ public class index extends JFrame {
 
 	public void addCanvas(Color rgb, Color Grey){
 		MyCanvas canvas = new MyCanvas(rgb);		
-		canvas.repaint();
+//		JFrame test = new JFrame();
+//		test.setSize(300, 300);
+//		test.setVisible(true);
+//		test.add(canvas);
 		contentPane.add(canvas);
+	//	canvas.repaint();
+
 	}
 
 	public void setGreyLevel(){
