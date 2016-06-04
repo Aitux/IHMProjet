@@ -77,9 +77,6 @@ public class index extends JFrame {
 		JSeparator separator = new JSeparator();
 		mnFile.add(separator);
 
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Import from .txt");
-		mnFile.add(mntmNewMenuItem_1);
-
 		JMenuItem mntmExportTotxt = new JMenuItem("Export to .txt");
 		mnFile.add(mntmExportTotxt);
 
@@ -165,7 +162,6 @@ public class index extends JFrame {
 		pane.add(color2);
 		contentPane.add(pane);
 		contentPane.validate();
-		contentPane.repaint();
 	}
 
 	public void setGreyLevel(){
