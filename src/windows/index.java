@@ -104,7 +104,7 @@ public class index extends JFrame {
 						
 				
 				}else{
-					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajouter de couleur !!");
+					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajouté de couleur !!");
 				}
 			}
 		});
