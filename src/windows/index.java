@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
@@ -56,7 +57,6 @@ public class index extends JFrame {
 		mntmFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				// TODO Auto-generated method stub
 				Colorchooser newcouleur = new Colorchooser();
 				newcouleur.setParent(info);
 				newcouleur.setLocationRelativeTo(contentPane);
@@ -74,7 +74,8 @@ public class index extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				if(!couleurTotal.isEmpty()){
 				int cpt = 0;
 				JFileChooser jfc = new JFileChooser();
 				jfc.setDialogTitle("Select the place to export");
@@ -96,14 +97,15 @@ public class index extends JFrame {
 					}
 					flux.close();
 					fichier.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} catch (IOException e1){
 					System.out.println("Is it too late to say sooooooooooooooooory ??");
 					e1.printStackTrace();
 				}
 						
 				
-				
+				}else{
+					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajouter de couleur !!");
+				}
 			}
 		});
 		mnFile.add(mntmExportTotxt);
@@ -143,7 +145,6 @@ public class index extends JFrame {
 	}
 
 	private void FirstTime() {
-		// TODO Auto-generated method stub
 		paneLbl = new JPanel();
 		lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
 	}
@@ -197,6 +198,10 @@ public class index extends JFrame {
 		pane.setTextClr(RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
 		pane.setTextGry("Gris:"+Grey.getRed());
 		pane.setParent(info);
+		ArrayList<String> str = new ArrayList<>();
+		str.add("RGB: "+RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
+		str.add("Gris: "+Grey.getRed());
+		couleurTotal.add(str);
 		contentPane.add(pane);
 		contentPane.validate();
 	}
