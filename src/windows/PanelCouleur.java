@@ -15,6 +15,11 @@ import javax.swing.border.MatteBorder;
 import com.sun.xml.internal.ws.api.server.Container;
 
 public class PanelCouleur extends JPanel {
+	
+	private index parent;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel;
+	
 	PanelCouleur(Color couleur, Color grey){
 		this.setPreferredSize(new Dimension(300,200));
 		setBorder(new MatteBorder(1, 1, 3, 2, (Color) new Color(0, 0, 0)));
@@ -30,11 +35,11 @@ public class PanelCouleur extends JPanel {
 		panel_1.setBackground(grey);
 		add(panel_1);
 		
-		JLabel lblNewLabel = new JLabel("Couleur couleur");
+		lblNewLabel = new JLabel("Couleur couleur");
 		lblNewLabel.setBounds(20, 161, 98, 25);
 		add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Couleur gris");
+		lblNewLabel_1 = new JLabel("Couleur gris");
 		lblNewLabel_1.setBounds(163, 161, 98, 25);
 		add(lblNewLabel_1);
 		
@@ -58,4 +63,19 @@ public class PanelCouleur extends JPanel {
 				);
 		
 	}
+	
+	public void setParent(index parent){
+		this.parent = parent;
+	}
+	
+	public void setTextClr(String txt){
+		lblNewLabel.setText(txt);
+	}
+	
+	public void setTextGry(String txt){
+		lblNewLabel_1.setText(txt);
+	}
+	
+	
+	
 }
