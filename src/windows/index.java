@@ -196,6 +196,7 @@ public class index extends JFrame {
 		PanelCouleur pane = new PanelCouleur(rgb, Grey);
 		pane.setTextClr(RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
 		pane.setTextGry("Gris:"+Grey.getRed());
+		pane.setParent(info);
 		contentPane.add(pane);
 		contentPane.validate();
 	}
