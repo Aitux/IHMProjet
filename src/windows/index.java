@@ -14,7 +14,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -67,7 +66,7 @@ public class index extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu mnFile = new JMenu("File");
+		JMenu mnFile = new JMenu("     File     ");
 		menuBar.add(mnFile);
 
 		JMenuItem mntmFile = new JMenuItem("Add new color");
@@ -131,10 +130,10 @@ public class index extends JFrame {
 		});
 		mnFile.add(mntmExit);
 
-		JMenu mnEdit = new JMenu("Edit");
+		JMenu mnEdit = new JMenu("     Edit     ");
 		menuBar.add(mnEdit);
 
-		JMenuItem mntmCopyCtrl = new JMenuItem("Copy        Ctrl + C");
+		JMenuItem mntmCopyCtrl = new JMenuItem("Copy          Ctrl + C");
 		mntmCopyCtrl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -167,6 +166,7 @@ public class index extends JFrame {
 			lblYourWorkspaceIs.setOpaque(true);
 			lblYourWorkspaceIs.setBackground(Color.WHITE);
 			paneLbl.add(lblYourWorkspaceIs);
+			paneLbl.setBackground(Color.WHITE);
 			contentPane.add(paneLbl);
 			GridBagLayout gbl_contentPane = new GridBagLayout();
 			gbl_contentPane.columnWidths = new int[]{0};
@@ -177,12 +177,16 @@ public class index extends JFrame {
 		}else{ 
 			System.out.println("Hola Chica");
 			Container parent = lblYourWorkspaceIs.getParent();
+			try{
 			parent.remove(lblYourWorkspaceIs);
+			parent.getParent().remove(parent);
 			parent.validate();
 			parent.repaint();
-			contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+			}catch(NullPointerException ex){
+				
+			}
 			FlowLayout test = new FlowLayout(FlowLayout.CENTER);
-			
+
 			contentPane.setLayout(test);
 			
 		}

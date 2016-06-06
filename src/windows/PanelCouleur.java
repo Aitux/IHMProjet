@@ -5,11 +5,6 @@ import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
 import javax.swing.border.MatteBorder;
 
 public class PanelCouleur extends JPanel {
