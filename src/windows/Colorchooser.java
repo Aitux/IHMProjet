@@ -66,7 +66,7 @@ public class Colorchooser extends JDialog {
 						Parent.addCanvas(Parent.getRGB(), Parent.getGrey());
 						Parent.isEmpty();
 						Parent.validate();
-
+						
 					}
 				});
 				buttonPane.add(okButton);

@@ -174,10 +174,10 @@ public class index extends JFrame {
 			System.out.println("Hola Chica");
 			Container parent = lblYourWorkspaceIs.getParent();
 			parent.remove(lblYourWorkspaceIs);
+			super.remove(paneLbl);
 			parent.validate();
 			parent.repaint();
 			FlowLayout test = new FlowLayout(FlowLayout.CENTER);
-			
 			contentPane.setLayout(test);
 			
 		}
@@ -198,6 +198,7 @@ public class index extends JFrame {
 //		test.setVisible(true);
 //		test.add(canvas);
 	//	canvas.repaint();
+		
 		PanelCouleur pane = new PanelCouleur(rgb, Grey);
 //		JPanel pane = new JPanel();
 //		JPanel color1 = new JPanel();
