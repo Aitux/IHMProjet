@@ -17,6 +17,7 @@ import com.sun.xml.internal.ws.api.server.Container;
 public class PanelCouleur extends JPanel {
 	
 	private index parent;
+	private PanelCouleur me;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel;
 	
@@ -53,17 +54,22 @@ public class PanelCouleur extends JPanel {
 		panel_2.add(icon);
 		panel_2.setBounds(278, 1, 20, 20);
 		add(panel_2);
+		setMe();
 		panel_2.addMouseListener( new MouseAdapter(){
 			@Override
 					public void mouseClicked(MouseEvent e) {
 						super.mouseClicked(e);
-						
+						parent.remove(me);
+						parent.validate();
+						parent.repaint();
 					}		
 		}
 				);
 		
 	}
-	
+	public void setMe(){
+		this.me = this;
+	}
 	public void setParent(index parent){
 		this.parent = parent;
 	}
