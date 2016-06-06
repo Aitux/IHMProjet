@@ -108,8 +108,11 @@ public class index extends JFrame {
 							cpt++;
 						}
 					}
+					flux.close();
+					fichier.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
+					System.out.println("Is it too late to say sooooooooooooooooory ??");
 					e1.printStackTrace();
 				}
 						
@@ -132,17 +135,11 @@ public class index extends JFrame {
 
 		JMenu mnEdit = new JMenu("     Edit     ");
 		menuBar.add(mnEdit);
+		
+		JMenuItem mntmCloseAll = new JMenuItem("Remove All");
+		mnEdit.add(mntmCloseAll);
 
-		JMenuItem mntmCopyCtrl = new JMenuItem("Copy          Ctrl + C");
-		mntmCopyCtrl.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		mnEdit.add(mntmCopyCtrl);
-
-		JMenuItem mntmPasteCtrl = new JMenuItem("Paste        Ctrl + V");
-		mnEdit.add(mntmPasteCtrl);
+	
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(Color.WHITE);
