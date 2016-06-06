@@ -2,6 +2,7 @@ package windows;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -141,6 +142,7 @@ public class index extends JFrame {
 		mnEdit.add(mntmPasteCtrl);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(Color.WHITE);
 		setContentPane(contentPane);
 		FirstTime();
 		isEmpty();
@@ -158,6 +160,8 @@ public class index extends JFrame {
 		if((compNum = contentPane.getComponentCount()) == 0 ){
 			lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
 			lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
+			lblYourWorkspaceIs.setOpaque(true);
+			lblYourWorkspaceIs.setBackground(Color.WHITE);
 			paneLbl.add(lblYourWorkspaceIs);
 			contentPane.add(paneLbl);
 			GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -172,8 +176,10 @@ public class index extends JFrame {
 			parent.remove(lblYourWorkspaceIs);
 			parent.validate();
 			parent.repaint();
-			contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-
+			FlowLayout test = new FlowLayout(FlowLayout.CENTER);
+			
+			contentPane.setLayout(test);
+			
 		}
 	}
 
@@ -192,17 +198,17 @@ public class index extends JFrame {
 //		test.setVisible(true);
 //		test.add(canvas);
 	//	canvas.repaint();
-
-		JPanel pane = new JPanel();
-		JPanel color1 = new JPanel();
-		JPanel color2 = new JPanel();
-		color1.setBackground(rgb);
-		color2.setBackground(Grey);
-		pane.setLayout(new GridLayout(2,2));
-		pane.add(color1);
-		pane.add(color2);
-		pane.add(new JLabel("test couleur"));
-		pane.add(new JLabel("test couleur2"));
+		PanelCouleur pane = new PanelCouleur(rgb, Grey);
+//		JPanel pane = new JPanel();
+//		JPanel color1 = new JPanel();
+//		JPanel color2 = new JPanel();
+//		color1.setBackground(rgb);
+//		color2.setBackground(Grey);
+//		pane.setLayout(new GridLayout(2,2));
+//		pane.add(color1);
+//		pane.add(color2);
+//		pane.add(new JLabel("test couleur"));
+//		pane.add(new JLabel("test couleur2"));
 		contentPane.add(pane);
 		contentPane.validate();
 	}
