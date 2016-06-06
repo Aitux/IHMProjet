@@ -15,6 +15,10 @@ import java.awt.Toolkit;
 
 public class Colorchooser extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1943127542127797500L;
 	private final JPanel contentPanel = new JPanel();
 	private index Parent;
 	/**
@@ -22,7 +26,7 @@ public class Colorchooser extends JDialog {
 	 */
 	public Colorchooser() {
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Colorchooser.class.getResource("/balance.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Colorchooser.class.getResource("/color-circle.png")));
 		setMinimumSize(new Dimension(500, 300));
 
 		this.setTitle("Palette de couleur");
@@ -61,6 +65,8 @@ public class Colorchooser extends JDialog {
 						System.out.println(Parent.toString());
 						Parent.addCanvas(Parent.getRGB(), Parent.getGrey());
 						Parent.isEmpty();
+						Parent.validate();
+
 					}
 				});
 				buttonPane.add(okButton);

@@ -7,6 +7,10 @@ import javax.swing.JPanel;
 
 public class MyCanvas extends JPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5816233945679767459L;
 	private Color color;
 
 	public MyCanvas(Color color){
