@@ -8,7 +8,10 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -90,11 +93,27 @@ public class index extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				int cpt = 0;
 				JFileChooser jfc = new JFileChooser();
 				jfc.setDialogTitle("Select the place to export");
 				jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				jfc.showOpenDialog(contentPane);
 				File fi = jfc.getSelectedFile();
+				FileWriter flux;
+				try {
+					flux = new FileWriter(fi);
+					BufferedWriter fichier = new BufferedWriter(flux);
+					for(ArrayList ar : couleurTotal){
+						for(int i = 0;i<ar.size();i++){
+							flux.write(""+cpt+" "+ar.get(i));
+							cpt++;
+						}
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+						
 				
 				
 			}
