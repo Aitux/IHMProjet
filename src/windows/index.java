@@ -71,43 +71,50 @@ public class index extends JFrame {
 
 		JMenuItem mntmExportTotxt = new JMenuItem("Export to .txt");
 		mntmExportTotxt.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if(!couleurTotal.isEmpty()){
-				int cpt = 0;
-				JFileChooser jfc = new JFileChooser();
-				jfc.setDialogTitle("Select the place to export");
-				jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				jfc.showOpenDialog(contentPane);
-				String path = jfc.getSelectedFile().toString();
-				path += "\\exportColor.txt";
-				System.out.println(path);
-				File fi = new File(path);
-				FileWriter flux;
-				try {
-					flux = new FileWriter(fi);
-					BufferedWriter fichier = new BufferedWriter(flux);
-					for(ArrayList ar : couleurTotal){
-						for(int i = 0;i<ar.size();i++){
-							flux.write(""+cpt+" "+ar.get(i));
-							cpt++;
+					try{
+						int cpt = 0;
+						JFileChooser jfc = new JFileChooser();
+						jfc.setDialogTitle("Select the place to export");
+						jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+						jfc.showOpenDialog(contentPane);
+						String path = jfc.getSelectedFile().toString();
+						path += "\\exportColor.txt";
+						System.out.println(path);
+						File fi = new File(path);
+						FileWriter flux;
+						try {
+							flux = new FileWriter(fi);
+							BufferedWriter fichier = new BufferedWriter(flux);
+							for(@SuppressWarnings("rawtypes") ArrayList ar : couleurTotal){
+								for(int i = 0;i<ar.size();i++){
+									flux.write(""+cpt+" "+ar.get(i)+" | ");
+									cpt++;
+								}
+								flux.write("\r\n");
+							}
+							flux.close();
+							fichier.close();
+						} catch (IOException e1){
+							System.out.println("Is it too late to say sooooooooooooooooory ??");
+							e1.printStackTrace();
 						}
-					}
-					flux.close();
-					fichier.close();
-				} catch (IOException e1){
-					System.out.println("Is it too late to say sooooooooooooooooory ??");
-					e1.printStackTrace();
-				}
+
+
+					}catch(NullPointerException e1){
 						
-				
+					}
 				}else{
 					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajouté de couleur !!");
 				}
+				
 			}
-		});
+		
+	});
 		mnFile.add(mntmExportTotxt);
 
 		JSeparator separator_1 = new JSeparator();
@@ -123,7 +130,7 @@ public class index extends JFrame {
 
 		JMenu mnEdit = new JMenu("     Edit     ");
 		menuBar.add(mnEdit);
-		
+
 		JMenuItem mntmCloseAll = new JMenuItem("Remove All");
 		mntmCloseAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -135,91 +142,91 @@ public class index extends JFrame {
 		});
 		mnEdit.add(mntmCloseAll);
 
-	
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(Color.WHITE);
 		setContentPane(contentPane);
 		FirstTime();
 		isEmpty();
-	}
+}
 
-	private void FirstTime() {
-		paneLbl = new JPanel();
-		lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
-	}
+private void FirstTime() {
+	paneLbl = new JPanel();
+	lblYourWorkspaceIs = new JLabel("Your workspace is empty. File > Add new color, to start !");
+}
 
-	public void isEmpty() {
-		@SuppressWarnings("unused")
-		int compNum;
-		if((compNum = contentPane.getComponentCount()) == 0 ){
-			lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
-			lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
-			lblYourWorkspaceIs.setOpaque(true);
-			lblYourWorkspaceIs.setBackground(Color.WHITE);
-			paneLbl.add(lblYourWorkspaceIs);
-			paneLbl.setBackground(Color.WHITE);
-			contentPane.add(paneLbl);
-			GridBagLayout gbl_contentPane = new GridBagLayout();
-			gbl_contentPane.columnWidths = new int[]{0};
-			gbl_contentPane.rowHeights = new int[]{0};
-			gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
-			gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
-			contentPane.setLayout(gbl_contentPane);
-		}else{ 
-			System.out.println("Hola Chica");
-			Container parent = lblYourWorkspaceIs.getParent();
-			try{
+public void isEmpty() {
+	@SuppressWarnings("unused")
+	int compNum;
+	if((compNum = contentPane.getComponentCount()) == 0 ){
+		lblYourWorkspaceIs.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblYourWorkspaceIs.setForeground(Color.LIGHT_GRAY);
+		lblYourWorkspaceIs.setOpaque(true);
+		lblYourWorkspaceIs.setBackground(Color.WHITE);
+		paneLbl.add(lblYourWorkspaceIs);
+		paneLbl.setBackground(Color.WHITE);
+		contentPane.add(paneLbl);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{0};
+		gbl_contentPane.rowHeights = new int[]{0};
+		gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
+	}else{ 
+		System.out.println("Hola Chica");
+		Container parent = lblYourWorkspaceIs.getParent();
+		try{
 			parent.remove(lblYourWorkspaceIs);
 			super.remove(paneLbl);
 			parent.getParent().remove(parent);
 			parent.validate();
 			parent.repaint();
-			}catch(NullPointerException ex){
-				
-			}
-			FlowLayout test = new FlowLayout(FlowLayout.CENTER);
-			contentPane.setLayout(test);
-			
+		}catch(NullPointerException ex){
+
 		}
-	}
+		FlowLayout test = new FlowLayout(FlowLayout.CENTER);
+		contentPane.setLayout(test);
 
-	public void setRGB(Color color){
-		this.RGB = color;
 	}
+}
 
-	public String toString(){
-		return RGB.toString() + " "+ GreyLevel.toString();
-	}
+public void setRGB(Color color){
+	this.RGB = color;
+}
 
-	public void addCanvas(Color rgb, Color Grey){
+public String toString(){
+	return RGB.toString() + " "+ GreyLevel.toString();
+}
 
-		PanelCouleur pane = new PanelCouleur(rgb, Grey);
-		pane.setTextClr(RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
-		pane.setTextGry("Gris:"+Grey.getRed());
-		pane.setParent(info);
-		ArrayList<String> str = new ArrayList<>();
-		str.add("RGB: "+RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
-		str.add("Gris: "+Grey.getRed());
-		couleurTotal.add(str);
-		contentPane.add(pane);
-		contentPane.validate();
-	}
+public void addCanvas(Color rgb, Color Grey){
 
-	public void setGreyLevel(){
-		int r, g, b, res;
-		r = RGB.getRed();
-		g = RGB.getGreen();
-		b = RGB.getBlue();
-		res =(int) (0.3*r+0.59*g+0.11*b);
-		this.GreyLevel = new Color(res, res ,res);
-	}
+	PanelCouleur pane = new PanelCouleur(rgb, Grey);
+	pane.setTextClr(RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
+	pane.setTextGry("Gris:"+Grey.getRed());
+	pane.setParent(info);
+	ArrayList<String> str = new ArrayList<>();
+	str.add("RGB: "+RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
+	str.add("Gris: "+Grey.getRed());
+	couleurTotal.add(str);
+	contentPane.add(pane);
+	contentPane.validate();
+}
 
-	public Color getRGB(){
-		return this.RGB;
-	}
+public void setGreyLevel(){
+	int r, g, b, res;
+	r = RGB.getRed();
+	g = RGB.getGreen();
+	b = RGB.getBlue();
+	res =(int) (0.3*r+0.59*g+0.11*b);
+	this.GreyLevel = new Color(res, res ,res);
+}
 
-	public Color getGrey(){
-		return this.GreyLevel;
-	}
+public Color getRGB(){
+	return this.RGB;
+}
+
+public Color getGrey(){
+	return this.GreyLevel;
+}
 }
