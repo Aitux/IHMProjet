@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -167,12 +168,10 @@ public class index extends JFrame {
 
 	public void addCanvas(Color rgb, Color Grey){
 
-		MyCanvas canvas = new MyCanvas(rgb);		
 //		JFrame test = new JFrame();
 //		test.setSize(300, 300);
 //		test.setVisible(true);
 //		test.add(canvas);
-		contentPane.add(canvas);
 	//	canvas.repaint();
 
 		JPanel pane = new JPanel();
@@ -180,9 +179,11 @@ public class index extends JFrame {
 		JPanel color2 = new JPanel();
 		color1.setBackground(rgb);
 		color2.setBackground(Grey);
-		pane.setLayout(new BoxLayout(pane, BoxLayout.X_AXIS));
+		pane.setLayout(new GridLayout(2,2));
 		pane.add(color1);
 		pane.add(color2);
+		pane.add(new JLabel("test couleur"));
+		pane.add(new JLabel("test couleur2"));
 		contentPane.add(pane);
 		contentPane.validate();
 	}
