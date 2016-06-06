@@ -137,6 +137,14 @@ public class index extends JFrame {
 		menuBar.add(mnEdit);
 		
 		JMenuItem mntmCloseAll = new JMenuItem("Remove All");
+		mntmCloseAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.removeAll();
+				isEmpty();
+				validate();
+				repaint();
+			}
+		});
 		mnEdit.add(mntmCloseAll);
 
 	
