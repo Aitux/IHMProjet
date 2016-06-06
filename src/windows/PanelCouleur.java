@@ -15,10 +15,12 @@ public class PanelCouleur extends JPanel {
 	
 	private index parent;
 	private PanelCouleur me;
+	private static int cpt = 1;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel;
 	
 	PanelCouleur(Color couleur, Color grey){
+		
 		this.setPreferredSize(new Dimension(300,200));
 		setBorder(new MatteBorder(1, 1, 3, 2, (Color) new Color(0, 0, 0)));
 		setLayout(null);
@@ -51,18 +53,24 @@ public class PanelCouleur extends JPanel {
 		panel_2.add(icon);
 		panel_2.setBounds(278, 1, 20, 20);
 		add(panel_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("Echantillon N°"+cpt);
+		lblNewLabel_2.setBounds(10, 5, 85, 15);
+		add(lblNewLabel_2);
 		setMe();
 		panel_2.addMouseListener( new MouseAdapter(){
 			@Override
 					public void mouseClicked(MouseEvent e) {
 						super.mouseClicked(e);
 						parent.remove(me);
+			
+						parent.isEmpty();
 						parent.validate();
 						parent.repaint();
 					}		
 		}
 				);
-		
+		cpt++;
 	}
 	public void setMe(){
 		this.me = this;
@@ -78,7 +86,7 @@ public class PanelCouleur extends JPanel {
 	public void setTextGry(String txt){
 		lblNewLabel_1.setText(txt);
 	}
-	
-	
-	
+	public static void resetcpt(){
+		cpt =1; 
+	}
 }

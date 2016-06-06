@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +23,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 
@@ -100,7 +103,7 @@ public class index extends JFrame {
 							flux.close();
 							fichier.close();
 						} catch (IOException e1){
-							System.out.println("Is it too late to say sooooooooooooooooory ??");
+							System.out.println("Is it too late now to say sooooooooooooooooory ??");
 							e1.printStackTrace();
 						}
 
@@ -131,7 +134,7 @@ public class index extends JFrame {
 		JMenu mnEdit = new JMenu("     Edit     ");
 		menuBar.add(mnEdit);
 
-		JMenuItem mntmCloseAll = new JMenuItem("Remove All");
+		JMenuItem mntmCloseAll = new JMenuItem("Remove All", new ImageIcon(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/poubelle.png"))));
 		mntmCloseAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
@@ -173,6 +176,7 @@ public void isEmpty() {
 		gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
+		PanelCouleur.resetcpt();
 	}else{ 
 		System.out.println("Hola Chica");
 		Container parent = lblYourWorkspaceIs.getParent();
