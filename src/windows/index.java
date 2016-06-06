@@ -1,7 +1,6 @@
 package windows;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -37,22 +36,6 @@ public class index extends JFrame {
 	private Color GreyLevel;
 	private index info = this;
 	private ArrayList<ArrayList<String>> couleurTotal = new ArrayList<>();
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					index frame = new index();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -97,7 +80,10 @@ public class index extends JFrame {
 				jfc.setDialogTitle("Select the place to export");
 				jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				jfc.showOpenDialog(contentPane);
-				File fi = jfc.getSelectedFile();
+				String path = jfc.getSelectedFile().toString();
+				path += "\\exportColor.txt";
+				System.out.println(path);
+				File fi = new File(path);
 				FileWriter flux;
 				try {
 					flux = new FileWriter(fi);
@@ -207,22 +193,9 @@ public class index extends JFrame {
 
 	public void addCanvas(Color rgb, Color Grey){
 
-//		JFrame test = new JFrame();
-//		test.setSize(300, 300);
-//		test.setVisible(true);
-//		test.add(canvas);
-	//	canvas.repaint();
 		PanelCouleur pane = new PanelCouleur(rgb, Grey);
-//		JPanel pane = new JPanel();
-//		JPanel color1 = new JPanel();
-//		JPanel color2 = new JPanel();
-//		color1.setBackground(rgb);
-//		color2.setBackground(Grey);
-//		pane.setLayout(new GridLayout(2,2));
-//		pane.add(color1);
-//		pane.add(color2);
-//		pane.add(new JLabel("test couleur"));
-//		pane.add(new JLabel("test couleur2"));
+		pane.setTextClr(RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
+		pane.setTextGry("Gris:"+Grey.getRed());
 		contentPane.add(pane);
 		contentPane.validate();
 	}
