@@ -61,7 +61,7 @@ public class index extends JFrame {
 		setBackground(Color.BLACK);
 		setTitle("Comparateur de niveau de gris");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1036, 626);
+		setBounds(100, 100, 1080, 720);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -134,6 +134,11 @@ public class index extends JFrame {
 		menuBar.add(mnEdit);
 
 		JMenuItem mntmCopyCtrl = new JMenuItem("Copy        Ctrl + C");
+		mntmCopyCtrl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		mnEdit.add(mntmCopyCtrl);
 
 		JMenuItem mntmPasteCtrl = new JMenuItem("Paste        Ctrl + V");
@@ -168,10 +173,13 @@ public class index extends JFrame {
 		}else{ 
 			System.out.println("Hola Chica");
 			Container parent = lblYourWorkspaceIs.getParent();
+			try{
 			parent.remove(lblYourWorkspaceIs);
 			parent.validate();
 			parent.repaint();
 			contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+			}catch(NullPointerException ex){
+			}
 
 		}
 	}
