@@ -1,7 +1,6 @@
 package windows;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
@@ -34,19 +33,20 @@ public class index extends JFrame {
 	private static final long serialVersionUID = -4845003394650059301L;
 	private JPanel paneLbl;
 	private JLabel lblYourWorkspaceIs;
-	private JPanel contentPane;
+	protected JPanel contentPane;
 	private JScrollPane container;
 	private Color RGB;
 	private Color GreyLevel;
 	private index info = this;
 	protected ArrayList<PanelCouleur> couleurTotal = new ArrayList<>();
+	
 	/**
 	 * Create the frame.
 	 */
 	public index() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/color-circle.png")));
 		setBackground(Color.BLACK);
-		setTitle("Comparateur de niveau de gris");
+		setTitle("Grey Level Comparator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
 
@@ -56,7 +56,7 @@ public class index extends JFrame {
 		JMenu mnFile = new JMenu("     File     ");
 		menuBar.add(mnFile);
 
-		JMenuItem mntmFile = new JMenuItem("Add new color");
+		JMenuItem mntmFile = new JMenuItem("Add new color", new ImageIcon(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/poubelle.png"))));
 		mntmFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
@@ -88,7 +88,6 @@ public class index extends JFrame {
 						jfc.showOpenDialog(contentPane);
 						String path = jfc.getSelectedFile().toString();
 						path += "\\exportColor.txt";
-						System.out.println(path);
 						File fi = new File(path);
 						FileWriter flux;
 						try {
@@ -110,10 +109,9 @@ public class index extends JFrame {
 
 
 					}catch(NullPointerException e1){
-						
 					}
 				}else{
-					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajout� de couleur !!");
+					JOptionPane.showMessageDialog(contentPane, "Nothing to export.");
 				}
 				
 			}
@@ -124,7 +122,7 @@ public class index extends JFrame {
 		JSeparator separator_1 = new JSeparator();
 		mnFile.add(separator_1);
 
-		JMenuItem mntmExit = new JMenuItem("Exit");
+		JMenuItem mntmExit = new JMenuItem("Exit", new ImageIcon(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/poubelle.png"))));
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
