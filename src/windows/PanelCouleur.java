@@ -96,7 +96,13 @@ public class PanelCouleur extends JPanel {
 	
 	public String toString(){
 		//TODO
-		return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Gris: "+this.grey.getRed();
+		return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Grey: "+this.grey.getRed();
+	}
+	public String couleurtoString(){
+		return ""+this.nom+"\n"+" RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue();
+	}
+	public String greytoString(){
+		return ""+this.nom+"\n"+"Grey: "+this.grey.getRed();
 	}
 	public Color getcolor(){
 		return couleur;
