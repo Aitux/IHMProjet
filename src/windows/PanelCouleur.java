@@ -89,6 +89,12 @@ public class PanelCouleur extends JPanel {
 		label.setBounds(136, 1, 20, 20);
 		add(label);
 		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Idea idea = new Idea(couleur, grey);
+			}
+		});
 		lblNewLabel_2.setIcon(new ImageIcon(PanelCouleur.class.getResource("/idea.png")));
 		lblNewLabel_2.setBounds(274, 173, 16, 16);
 		add(lblNewLabel_2);
