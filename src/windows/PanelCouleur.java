@@ -83,7 +83,6 @@ public class PanelCouleur extends JPanel {
 		txtEchantillon.setBackground(this.getBackground());
 		add(txtEchantillon);
 		txtEchantillon.setColumns(10);
-		
 		JLabel label = new JLabel("");
 		label.setToolTipText("To Edit the name of the sample click directly on the name");
 		label.setIcon(new ImageIcon(PanelCouleur.class.getResource("/edit.png")));
