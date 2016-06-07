@@ -19,6 +19,7 @@ public class PanelCouleur extends JPanel {
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel;
 	private Color couleur, grey;
+	private String nom = "Echantillon N°"+cpt;
 	
 	PanelCouleur(Color couleur, Color grey){
 		
@@ -55,7 +56,7 @@ public class PanelCouleur extends JPanel {
 		panel_2.setBounds(278, 1, 20, 20);
 		add(panel_2);
 		
-		JLabel lblNewLabel_2 = new JLabel("Echantillon NÂ°"+cpt);
+		JLabel lblNewLabel_2 = new JLabel(nom);
 		lblNewLabel_2.setBounds(10, 5, 150, 15);
 		add(lblNewLabel_2);
 		setMe();
@@ -63,7 +64,7 @@ public class PanelCouleur extends JPanel {
 			@Override
 					public void mouseClicked(MouseEvent e) {
 						super.mouseClicked(e);
-						parent.remove(me);
+						parent.contentPane.remove(me);
 						parent.couleurTotal.remove(me);
 						parent.isEmpty();
 						parent.validate();
@@ -93,10 +94,19 @@ public class PanelCouleur extends JPanel {
 		cpt =1; 
 	}
 	
-//	public String toString(){
-//		//TODO
-//		return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Gris: "+this.grey.getRed();
-//	}
+	public String toString(){
+		//TODO
+		return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Gris: "+this.grey.getRed();
+	}
+	public Color getcolor(){
+		return couleur;
+	}
+	public Color getgrey(){
+		return grey;
+	}
+	public String getnom(){
+		return nom;
+	}
 }
 
 

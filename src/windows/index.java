@@ -34,8 +34,8 @@ public class index extends JFrame {
 	private static final long serialVersionUID = -4845003394650059301L;
 	private JPanel paneLbl;
 	private JLabel lblYourWorkspaceIs;
-	private JPanel contentPane;
-	private JScrollPane container;
+	protected JPanel contentPane;
+	protected JScrollPane container;
 	private Color RGB;
 	private Color GreyLevel;
 	private index info = this;
@@ -71,6 +71,19 @@ public class index extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Compare two colors");
 		mnFile.add(mntmNewMenuItem);
 		JSeparator separator = new JSeparator();
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(couleurTotal.isEmpty()){
+					JOptionPane.showMessageDialog(contentPane, "The Color Area is Empty!");
+				}else if(couleurTotal.size() == 1 ){
+					JOptionPane.showMessageDialog(contentPane, "You Must add at least 2 colors to do that!");
+				}else{
+					ListePanel liste = new ListePanel(couleurTotal);
+					liste.setLocationRelativeTo(null);
+				}	
+			}
+		});
 		mnFile.add(separator);
 
 		JMenuItem mntmExportTotxt = new JMenuItem("Export to .txt");
