@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
 public class Idea extends JDialog {
@@ -37,15 +38,7 @@ public class Idea extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel label = new JLabel("");
-		label.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				colorPanel();
-			}
-		});
-		label.setIcon(new ImageIcon(Idea.class.getResource("/right-arrow.png")));
-		contentPanel.add(label);
+		
 		for(int r = 0;r < 256; r++){
 			for(int g = 0; g<256; g++){
 				for(int b = 0; b<256; b++){
@@ -57,6 +50,15 @@ public class Idea extends JDialog {
 		}
 
 		addPanel();
+		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				colorPanel();
+			}
+		});
+		label.setIcon(new ImageIcon(Idea.class.getResource("/right-arrow.png")));
+		contentPanel.add(label);
 		this.pack();
 		setLocationRelativeTo(index);
 		this.setVisible(true);
@@ -83,16 +85,9 @@ public class Idea extends JDialog {
 	}
 
 	public void colorPanel(){
+		try{
 		contentPanel.removeAll();
-		JLabel label = new JLabel("");
-		label.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				colorPanel();
-			}
-		});
-		label.setIcon(new ImageIcon(Idea.class.getResource("/right-arrow.png")));
-		contentPanel.add(label);
+
 		for(int i = 0; i<20 ;i++){
 			JPanel pane = new JPanel();
 			pane.setPreferredSize(new Dimension(50,50));
@@ -108,8 +103,21 @@ public class Idea extends JDialog {
 				}
 			});
 		}
+		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				colorPanel();
+			}
+		});
+		label.setIcon(new ImageIcon(Idea.class.getResource("/right-arrow.png")));
+		contentPanel.add(label);
 		validate();
 		repaint();
+		}catch(IndexOutOfBoundsException e){
+			JOptionPane.showMessageDialog(index, "Il n'y a plus de couleur disponible");
+			dispose();
+		}
 	
 	}
 }
