@@ -35,6 +35,7 @@ public class Idea extends JDialog {
 					if( (res = 0.3*r+0.59*g+0.11*b) == grey.getBlue() && cpt < 20){
 						cpt++;
 						JPanel pane = new JPanel();
+
 						pane.setPreferredSize(new Dimension(50,50));
 						Color color = new Color(r,g,b);
 						pane.setBackground(color);
@@ -47,6 +48,7 @@ public class Idea extends JDialog {
 								index.addCanvas(color, grey);
 							}
 						});
+
 						contentPanel.add(pane);
 					}
 				}
