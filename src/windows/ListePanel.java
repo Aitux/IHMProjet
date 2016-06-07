@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 public class ListePanel extends JDialog{
 	protected ListePanel me = this;
@@ -28,9 +29,8 @@ public class ListePanel extends JDialog{
 		
 		JList list = new JList();
 		list.setListData(couleurTotal.toArray());
-		
 		scrollPane.setViewportView(list);
-		
+
 		JButton btnValidate = new JButton("Validate");
 		btnValidate.setBounds(20, 366, 89, 23);
 		btnValidate.addActionListener(new ActionListener() {
@@ -39,9 +39,9 @@ public class ListePanel extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				if (list.getSelectedValuesList().size() <2){
 					JOptionPane.showMessageDialog(me, "You must select at least 2 colors to do that!");
-
+				}else if (list.getSelectedValuesList().size() >2){
+					JOptionPane.showMessageDialog(me, "Select only 2 colors!");
 				}else{
-					System.out.println("wallouh");
 					PanelCouleur[] tabcolor = new PanelCouleur[2];
 					tabcolor[0] = couleurTotal.get(list.getSelectedIndices()[0]);
 					tabcolor[1] = couleurTotal.get(list.getSelectedIndices()[1]);
