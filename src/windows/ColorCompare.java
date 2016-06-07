@@ -22,7 +22,8 @@ public class ColorCompare extends JDialog{
 		getContentPane().add(panel);
 		panel.setBackground(Color.WHITE);
 		panel.setLayout(null);
-		
+		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/color-circle.png")));
+
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(10, 11, 604, 391);

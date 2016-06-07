@@ -2,6 +2,7 @@ package windows;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JDialog;
@@ -29,6 +30,7 @@ public class Idea extends JDialog {
 						cpt++;
 						JPanel pane = new JPanel();
 						pane.setBackground(new Color(r,g,b));
+						pane.setPreferredSize(new Dimension(50,50));
 //						pane.addMouseListener(new MouseAdapter() {
 //							@Override
 //							public void mouseClicked(MouseEvent e) {

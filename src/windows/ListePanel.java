@@ -2,6 +2,7 @@ package windows;
 
 import java.awt.Dimension;
 import java.awt.List;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class ListePanel extends JDialog{
 		JLabel lblChooseTheTwo = new JLabel("Choose the two samples you want to compare:");
 		lblChooseTheTwo.setBounds(10, 11, 327, 14);
 		getContentPane().add(lblChooseTheTwo);
-		
+		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/color-circle.png")));
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 36, 264, 319);
 		getContentPane().add(scrollPane);
