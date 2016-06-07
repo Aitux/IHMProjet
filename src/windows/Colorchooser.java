@@ -1,7 +1,9 @@
 package windows;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,8 +12,6 @@ import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
 public class Colorchooser extends JDialog {
 
