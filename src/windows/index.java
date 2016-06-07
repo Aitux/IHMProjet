@@ -39,7 +39,7 @@ public class index extends JFrame {
 	private Color RGB;
 	private Color GreyLevel;
 	private index info = this;
-	private ArrayList<ArrayList<String>> couleurTotal = new ArrayList<>();
+	protected ArrayList<PanelCouleur> couleurTotal = new ArrayList<>();
 	/**
 	 * Create the frame.
 	 */
@@ -93,16 +93,16 @@ public class index extends JFrame {
 						try {
 							flux = new FileWriter(fi);
 							BufferedWriter fichier = new BufferedWriter(flux);
-							for(@SuppressWarnings("rawtypes") ArrayList ar : couleurTotal){
-								for(int i = 0;i<ar.size();i++){
-									flux.write(""+cpt+" "+ar.get(i)+" | ");
+							for(PanelCouleur ar : couleurTotal){
+								//TODO
+									flux.write(ar.toString());
 									cpt++;
+									flux.write("\r\n");
+
 								}
-								flux.write("\r\n");
-							}
 							flux.close();
 							fichier.close();
-						} catch (IOException e1){
+							} catch (IOException e1){
 							System.out.println("Is it too late now to say sooooooooooooooooory ??");
 							e1.printStackTrace();
 						}
@@ -112,7 +112,7 @@ public class index extends JFrame {
 						
 					}
 				}else{
-					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajouté de couleur !!");
+					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajoutï¿½ de couleur !!");
 				}
 				
 			}
@@ -139,6 +139,7 @@ public class index extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
 				isEmpty();
+				couleurTotal.removeAll(couleurTotal);
 				validate();
 				repaint();
 			}
@@ -178,7 +179,7 @@ public void isEmpty() {
 		contentPane.setLayout(gbl_contentPane);
 		PanelCouleur.resetcpt();
 	}else{ 
-		System.out.println("Hola Chica");
+//		System.out.println("Hola Chica");
 		Container parent = lblYourWorkspaceIs.getParent();
 		try{
 			parent.remove(lblYourWorkspaceIs);
@@ -198,10 +199,10 @@ public void isEmpty() {
 public void setRGB(Color color){
 	this.RGB = color;
 }
-
-public String toString(){
-	return RGB.toString() + " "+ GreyLevel.toString();
-}
+//
+//public String toString(){
+//	return RGB.toString() + " "+ GreyLevel.toString();
+//}
 
 public void addCanvas(Color rgb, Color Grey){
 
@@ -209,10 +210,7 @@ public void addCanvas(Color rgb, Color Grey){
 	pane.setTextClr(RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
 	pane.setTextGry("Gris:"+Grey.getRed());
 	pane.setParent(info);
-	ArrayList<String> str = new ArrayList<>();
-	str.add("RGB: "+RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
-	str.add("Gris: "+Grey.getRed());
-	couleurTotal.add(str);
+	couleurTotal.add(pane);
 	contentPane.add(pane);
 	contentPane.validate();
 }

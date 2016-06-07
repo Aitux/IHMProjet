@@ -31,7 +31,7 @@ public class Colorchooser extends JDialog {
 
 		this.setTitle("Palette de couleur");
 
-		JColorChooser test = new JColorChooser();
+		final JColorChooser test = new JColorChooser();
 		test.removeChooserPanel(test.getChooserPanels()[0]);
 		test.removeChooserPanel(test.getChooserPanels()[0]);
 		test.removeChooserPanel(test.getChooserPanels()[0]);
