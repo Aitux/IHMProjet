@@ -207,7 +207,7 @@ public void setRGB(Color color){
 public void addCanvas(Color rgb, Color Grey){
 
 	PanelCouleur pane = new PanelCouleur(rgb, Grey);
-	pane.setTextClr(RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
+	pane.setTextClr("RGB: "+RGB.getRed()+", "+RGB.getGreen()+", "+RGB.getBlue());
 	pane.setTextGry("Gris:"+Grey.getRed());
 	pane.setParent(info);
 	couleurTotal.add(pane);

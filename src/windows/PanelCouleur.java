@@ -37,7 +37,7 @@ public class PanelCouleur extends JPanel {
 		add(panel_1);
 		
 		lblNewLabel = new JLabel("Couleur couleur");
-		lblNewLabel.setBounds(20, 161, 98, 25);
+		lblNewLabel.setBounds(15, 161, 130, 25);
 		add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("Couleur gris");
