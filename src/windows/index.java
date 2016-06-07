@@ -60,13 +60,10 @@ public class index extends JFrame {
 		mntmFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-			for(int i = 0; i<5;i++){
 				Colorchooser newcouleur = new Colorchooser();
-			
-
 				newcouleur.setParent(info);
 				newcouleur.setLocationRelativeTo(contentPane);
-			}
+			
 			}
 		});
 		mnFile.add(mntmFile);
