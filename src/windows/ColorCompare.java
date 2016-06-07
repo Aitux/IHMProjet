@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class ColorCompare extends JDialog{
 	public ColorCompare(PanelCouleur[] selected) {
@@ -33,22 +34,40 @@ public class ColorCompare extends JDialog{
 		panel_2.setBounds(10, 11, 120, 370);
 		panel_1.add(panel_2);
 		panel_2.setBackground(selected[0].getcolor());
-		JLabel lblNewLabel = new JLabel(selected[0].getnom());
-		panel_2.add(lblNewLabel, BorderLayout.SOUTH);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		JTextArea textArea2 = new JTextArea(selected[0].couleurtoString());
+		textArea2.setEditable(false);
+		textArea2.setOpaque(false);
+		panel_2.add(textArea2, BorderLayout.SOUTH);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(133, 61, 120, 320);
 		panel_1.add(panel_3);
+		JTextArea textArea3 = new JTextArea(selected[1].couleurtoString());
+		textArea3.setEditable(false);
+		textArea3.setOpaque(false);
+		panel_3.setLayout(new BorderLayout(0, 0));
+		panel_3.add(textArea3,BorderLayout.SOUTH);
 		panel_3.setBackground(selected[1].getcolor());
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(474, 11, 120, 370);
 		panel_1.add(panel_4);
+		JTextArea textArea4 = new JTextArea(selected[0].greytoString());
+		textArea4.setEditable(false);
+		textArea4.setOpaque(false);
+		panel_4.setLayout(new BorderLayout(0, 0));
+		panel_4.add(textArea4,BorderLayout.SOUTH);
 		panel_4.setBackground(selected[1].getgrey());
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setBounds(351, 61, 120, 320);
-		panel_1.add(panel_5);
+		panel_1.add(panel_5);		
+		JTextArea textArea5 = new JTextArea(selected[1].greytoString());
+		textArea5.setEditable(false);
+		textArea5.setOpaque(false);
+		panel_5.setLayout(new BorderLayout(0, 0));
+		panel_5.add(textArea5,BorderLayout.SOUTH);
 		panel_5.setBackground(selected[0].getgrey());
 		
 		JPanel panel_6 = new JPanel();
@@ -75,6 +94,7 @@ public class ColorCompare extends JDialog{
 				dispose();
 			}
 		});
+		setTitle("Comparator");
 		setSize(new Dimension(640,480));
 		setLocationRelativeTo(null);
 		setVisible(true);

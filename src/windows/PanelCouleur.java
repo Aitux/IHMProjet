@@ -83,7 +83,6 @@ public class PanelCouleur extends JPanel {
 		txtEchantillon.setBackground(this.getBackground());
 		add(txtEchantillon);
 		txtEchantillon.setColumns(10);
-		
 		JLabel label = new JLabel("");
 		label.setToolTipText("To Edit the name of the sample click directly on the name");
 		label.setIcon(new ImageIcon(PanelCouleur.class.getResource("/edit.png")));
@@ -125,9 +124,17 @@ public class PanelCouleur extends JPanel {
 	public static void resetcpt(){
 		cpt =1; 
 	}
+	
+	public String toString(){
+		//TODO
+		return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Grey: "+this.grey.getRed();
+	}
+	public String couleurtoString(){
+		return ""+this.nom+"\n"+" RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue();
+	}
+	public String greytoString(){
+		return ""+this.nom+"\n"+"Grey: "+this.grey.getRed();
 
-	public String toString(){	
-	return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Gris: "+this.grey.getRed();
 	}
 	public Color getcolor(){
 		return couleur;
