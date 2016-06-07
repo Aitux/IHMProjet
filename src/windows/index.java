@@ -13,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -36,6 +35,7 @@ public class index extends JFrame {
 	private JPanel paneLbl;
 	private JLabel lblYourWorkspaceIs;
 	private JPanel contentPane;
+	private JScrollPane container;
 	private Color RGB;
 	private Color GreyLevel;
 	private index info = this;
@@ -60,9 +60,13 @@ public class index extends JFrame {
 		mntmFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
+			for(int i = 0; i<5;i++){
 				Colorchooser newcouleur = new Colorchooser();
+			
+
 				newcouleur.setParent(info);
 				newcouleur.setLocationRelativeTo(contentPane);
+			}
 			}
 		});
 		mnFile.add(mntmFile);
@@ -148,9 +152,11 @@ public class index extends JFrame {
 
 
 		contentPane = new JPanel();
+		container = new JScrollPane();
+		container.setViewportView(contentPane);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(Color.WHITE);
-		setContentPane(contentPane);
+		setContentPane(container);
 		FirstTime();
 		isEmpty();
 }
@@ -190,8 +196,8 @@ public void isEmpty() {
 		}catch(NullPointerException ex){
 
 		}
-		FlowLayout test = new FlowLayout(FlowLayout.CENTER);
-		contentPane.setLayout(test);
+		WrapLayout test2 = new WrapLayout();
+		contentPane.setLayout(test2);
 
 	}
 }
