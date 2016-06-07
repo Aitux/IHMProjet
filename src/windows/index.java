@@ -34,11 +34,8 @@ public class index extends JFrame {
 	private JPanel paneLbl;
 	private JLabel lblYourWorkspaceIs;
 	protected JPanel contentPane;
-<<<<<<< HEAD
-	private JScrollPane container;
-=======
+
 	protected JScrollPane container;
->>>>>>> branch 'master' of https://github.com/Aitux/IHMProjet.git
 	private Color RGB;
 	private Color GreyLevel;
 	private index info = this;
@@ -60,7 +57,7 @@ public class index extends JFrame {
 		JMenu mnFile = new JMenu("     File     ");
 		menuBar.add(mnFile);
 
-		JMenuItem mntmFile = new JMenuItem("Add new color", new ImageIcon(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/poubelle.png"))));
+		JMenuItem mntmFile = new JMenuItem("Add new color", new ImageIcon(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/add.png"))));
 		mntmFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
@@ -139,7 +136,7 @@ public class index extends JFrame {
 		JSeparator separator_1 = new JSeparator();
 		mnFile.add(separator_1);
 
-		JMenuItem mntmExit = new JMenuItem("Exit", new ImageIcon(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/poubelle.png"))));
+		JMenuItem mntmExit = new JMenuItem("Exit", new ImageIcon(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/close.png"))));
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);

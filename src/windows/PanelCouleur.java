@@ -3,16 +3,16 @@ package windows;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.MatteBorder;
 import javax.swing.JTextField;
+import javax.swing.border.MatteBorder;
 
 public class PanelCouleur extends JPanel {
 
@@ -23,13 +23,8 @@ public class PanelCouleur extends JPanel {
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel;
 	private Color couleur, grey;
-<<<<<<< HEAD
 	private JTextField txtEchantillon;
 
-=======
-	private String nom = "Echantillon N°"+cpt;
-	
->>>>>>> branch 'master' of https://github.com/Aitux/IHMProjet.git
 	PanelCouleur(Color couleur, Color grey){
 		
 		this.setPreferredSize(new Dimension(300,200));
@@ -64,17 +59,9 @@ public class PanelCouleur extends JPanel {
 		panel_2.add(icon);
 		panel_2.setBounds(278, 1, 20, 20);
 		add(panel_2);
-<<<<<<< HEAD
-=======
-		
-		JLabel lblNewLabel_2 = new JLabel(nom);
-		lblNewLabel_2.setBounds(10, 5, 150, 15);
-		add(lblNewLabel_2);
->>>>>>> branch 'master' of https://github.com/Aitux/IHMProjet.git
 		setMe();
 		panel_2.addMouseListener( new MouseAdapter(){
 			@Override
-<<<<<<< HEAD
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);			
 				parent.contentPane.remove(me);
@@ -83,16 +70,6 @@ public class PanelCouleur extends JPanel {
 				parent.validate();
 				parent.repaint();
 			}		
-=======
-					public void mouseClicked(MouseEvent e) {
-						super.mouseClicked(e);
-						parent.contentPane.remove(me);
-						parent.couleurTotal.remove(me);
-						parent.isEmpty();
-						parent.validate();
-						parent.repaint();
-					}		
->>>>>>> branch 'master' of https://github.com/Aitux/IHMProjet.git
 		}
 				);
 		this.couleur = couleur;
@@ -101,29 +78,25 @@ public class PanelCouleur extends JPanel {
 		txtEchantillon = new JTextField();
 		txtEchantillon.setText("Sample N°"+cpt);
 		this.nom = txtEchantillon.getText();
-		txtEchantillon.setBounds(15, 1, 221, 20);
+		txtEchantillon.setBounds(5, 1, 121, 20);
 		txtEchantillon.setBorder(null);
 		txtEchantillon.setBackground(this.getBackground());
 		add(txtEchantillon);
 		txtEchantillon.setColumns(10);
-		txtEchantillon.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				nom = txtEchantillon.getText();
-
-			}
-
-			@Override
+		
+		JLabel label = new JLabel("");
+		label.setToolTipText("To Edit the name of the sample click directly on the name");
+		label.setIcon(new ImageIcon(PanelCouleur.class.getResource("/edit.png")));
+		label.setBounds(136, 1, 20, 20);
+		add(label);
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(PanelCouleur.class.getResource("/idea.png")));
+		lblNewLabel_2.setBounds(274, 173, 16, 16);
+		add(lblNewLabel_2);
+		txtEchantillon.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-
+				super.keyReleased(e);
+				nom = txtEchantillon.getText();
 			}
 		});
 		cpt++;
@@ -146,16 +119,9 @@ public class PanelCouleur extends JPanel {
 	public static void resetcpt(){
 		cpt =1; 
 	}
-<<<<<<< HEAD
 
-	public String toString(){
-		
-		return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Gris: "+this.grey.getRed();
-=======
-	
-	public String toString(){
-		//TODO
-		return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Gris: "+this.grey.getRed();
+	public String toString(){	
+	return ""+this.nom+", RGB: "+this.couleur.getRed()+", "+this.couleur.getGreen()+", "+this.couleur.getBlue()+", Gris: "+this.grey.getRed();
 	}
 	public Color getcolor(){
 		return couleur;
@@ -165,7 +131,6 @@ public class PanelCouleur extends JPanel {
 	}
 	public String getnom(){
 		return nom;
->>>>>>> branch 'master' of https://github.com/Aitux/IHMProjet.git
 	}
 }
 
