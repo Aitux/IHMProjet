@@ -46,7 +46,7 @@ public class index extends JFrame {
 	public index() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/color-circle.png")));
 		setBackground(Color.BLACK);
-		setTitle("Comparateur de niveau de gris");
+		setTitle("Grey Level Comparator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
 
@@ -126,7 +126,7 @@ public class index extends JFrame {
 						
 					}
 				}else{
-					JOptionPane.showMessageDialog(contentPane, "Vous n'avez pas ajout� de couleur !!");
+					JOptionPane.showMessageDialog(contentPane, "You must at least add 1 color to export something");
 				}
 				
 			}

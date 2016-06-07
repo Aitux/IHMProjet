@@ -92,7 +92,7 @@ public class PanelCouleur extends JPanel {
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Idea idea = new Idea(couleur, grey);
+				Idea idea = new Idea(couleur, grey, parent);
 			}
 		});
 		lblNewLabel_2.setIcon(new ImageIcon(PanelCouleur.class.getResource("/idea.png")));
